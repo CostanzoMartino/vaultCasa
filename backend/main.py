@@ -8,10 +8,13 @@ from crypto_utils import hash_password, verify_password
 
 app = FastAPI()
 
+# Usa questo per sviluppo locale
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], #allow_credentials=True,
-    allow_methods=["*"], allow_headers=["*"],
+    allow_origins=["*"],           # accetta tutte le origini
+    allow_credentials=False,       # disabilita i cookie/authorization headers se usi "*"
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 class UserLogin(BaseModel):

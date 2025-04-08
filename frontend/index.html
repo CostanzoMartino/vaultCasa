@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Password Manager Web</title>
+  <style>
+    input, textarea, button { display: block; margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <h2>Registrazione</h2>
+  <input id="reg_username" placeholder="Nuovo username">
+  <input id="reg_password" type="password" placeholder="Nuova master password">
+  <button onclick="register()">Registrati</button>
+
+  <h2>Login</h2>
+  <input id="username" placeholder="Username">
+  <input id="password" type="password" placeholder="Master password">
+  <button onclick="login()">Login</button>
+
+  <div id="vault" style="display:none;">
+    <h3>Nuova credenziale</h3>
+    <input id="service" placeholder="Servizio">
+    <input id="login" placeholder="Login">
+    <input id="pw" placeholder="Password">
+    <textarea id="notes" placeholder="Note"></textarea>
+    <button onclick="saveCredential()">Salva</button>
+
+    <h3>Credenziali salvate</h3>
+    <ul id="creds"></ul>
+  </div>
+
+  <script src="crypto.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

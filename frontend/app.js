@@ -1,12 +1,13 @@
 
 let userId = null;
+const BACKEND_URL = "http://localhost:8000";
 
 async function login() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
   cryptoKey = await deriveKey(password);
 
-  const res = await fetch("http://localhost:8000/login", {
+  const res = await fetch(`${BACKEND_URL}/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, password })
@@ -26,7 +27,7 @@ async function register() {
   const username = document.getElementById("reg_username").value;
   const password = document.getElementById("reg_password").value;
 
-  const res = await fetch("http://localhost:8000/register", {
+  const res = await fetch(`${BACKEND_URL}/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, password })
@@ -48,7 +49,7 @@ async function saveCredential() {
   const encPw = await encrypt(pw);
   const encNotes = await encrypt(notes);
 
-  await fetch("http://localhost:8000/credentials", {
+  await fetch(`${BACKEND_URL}/credentials`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -65,7 +66,7 @@ async function saveCredential() {
 }
 
 async function loadCredentials() {
-  const res = await fetch(`http://localhost:8000/credentials/${userId}`);
+  const res = await fetch(`${BACKEND_URL}/credentials/${userId}`);
   const creds = await res.json();
   const list = document.getElementById("creds");
   list.innerHTML = "";

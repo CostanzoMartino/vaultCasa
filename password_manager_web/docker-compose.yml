@@ -28,7 +28,8 @@ services:
       - ./frontend:/usr/share/nginx/html
     ports:
       - "8080:80"
-       pgadmin:
+
+  pgadmin:
     image: dpage/pgadmin4
     restart: always
     ports:
@@ -41,3 +42,4 @@ services:
 
 volumes:
   pgdata:
+  pgadmin_data:
